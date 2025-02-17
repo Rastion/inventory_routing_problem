@@ -1,0 +1,39 @@
+{
+    "entry_point": "inventory_routing_problem:InventoryRoutingProblem",
+    "default_params": {
+      "instance_file": "instances/abs1n5.dat"
+    },
+    "problem_type": "Inventory Routing Problem",
+    "description": "The Inventory Routing Problem (IRP) is a distribution problem in which a product must be shipped from a supplier to several customers over a planning horizon. Each customer has a maximum inventory level and a known demand rate. The supplier, following a vendor-managed inventory policy, replenishes customers subject to a vehicle capacity constraint. Shipments incur transportation costs (computed from distances between the supplier and customers, and among customers), and both the supplier and customers incur inventory holding costs. The goal is to minimize the total cost, which is the sum of the supplier's inventory cost, the customers' inventory cost, and the transportation cost.",
+    "keywords": [
+      "inventory routing",
+      "vendor managed inventory",
+      "distribution",
+      "transportation cost",
+      "scheduling"
+    ],
+    "data_format": {
+      "instance_file": {
+        "format": "A text file where the first line contains three integers: the total number of nodes (supplier + customers, so the number of customers is this value minus one), the number of discrete time periods in the planning horizon, and the vehicle capacity. The second line contains supplier information: supplier index, x coordinate, y coordinate, starting inventory level, production quantity per time period, and unit inventory cost. Each of the following lines contains, for a customer, the customer index, x coordinate, y coordinate, starting inventory level, maximum inventory level, minimum inventory level, demand rate per time period, and unit inventory cost."
+      }
+    },
+    "decision_variables": {
+      "solution": {
+        "type": "dictionary",
+        "description": "A dictionary with two keys: 'delivery' and 'route'. 'delivery' is a matrix (list of lists) of size (time horizon × number of customers) where each entry represents the quantity delivered to a customer at a given time period. 'route' is a list (of length equal to the time horizon) where each element is a permutation (list) of customer indices (0-indexed) representing the order in which customers are visited at that time period."
+      }
+    },
+    "objective": {
+      "type": "minimization",
+      "function": "Total Cost = Supplier Inventory Cost + Customer Inventory Cost + Transportation Cost",
+      "description": "Minimize the total cost, defined as the sum of the supplier's inventory holding cost (over the entire planning horizon), the customers' inventory holding cost, and the transportation cost (computed from the distances traveled by the vehicle at each time period)."
+    },
+    "solution_representation": "A dictionary with keys 'delivery' (a matrix of delivered quantities) and 'route' (a list of routes, each route being a list of customer indices).",
+    "compatible_optimizers": [
+      "genetic_algorithm",
+      "simulated_annealing",
+      "particle_swarm",
+      "tabu_search"
+    ]
+  }
+  
