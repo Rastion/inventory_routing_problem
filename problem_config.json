@@ -3,14 +3,17 @@
     "default_params": {
       "instance_file": "instances/abs1n5.dat"
     },
-    "problem_type": "Inventory Routing Problem",
+    "creator": "Rastion",
+    "type": "problem",
+    "problem_name": "Inventory routing problem",
     "description": "The Inventory Routing Problem (IRP) is a distribution problem in which a product must be shipped from a supplier to several customers over a planning horizon. Each customer has a maximum inventory level and a known demand rate. The supplier, following a vendor-managed inventory policy, replenishes customers subject to a vehicle capacity constraint. Shipments incur transportation costs (computed from distances between the supplier and customers, and among customers), and both the supplier and customers incur inventory holding costs. The goal is to minimize the total cost, which is the sum of the supplier's inventory cost, the customers' inventory cost, and the transportation cost.",
+    "link_to_dataset": "https://github.com/Rastion/inventory_routing_problem/blob/main/instances/abs1n5.dat",
     "keywords": [
       "inventory routing",
       "vendor managed inventory",
       "distribution",
       "transportation cost",
-      "scheduling"
+      "production-scheduling"
     ],
     "data_format": {
       "instance_file": {
@@ -29,11 +32,8 @@
       "description": "Minimize the total cost, defined as the sum of the supplier's inventory holding cost (over the entire planning horizon), the customers' inventory holding cost, and the transportation cost (computed from the distances traveled by the vehicle at each time period)."
     },
     "solution_representation": "A dictionary with keys 'delivery' (a matrix of delivered quantities) and 'route' (a list of routes, each route being a list of customer indices).",
-    "compatible_optimizers": [
-      "genetic_algorithm",
-      "simulated_annealing",
-      "particle_swarm",
-      "tabu_search"
+    "formulations": [
+      ""
     ]
   }
   
